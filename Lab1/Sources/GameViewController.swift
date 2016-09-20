@@ -1,14 +1,7 @@
-//
-//  GameViewController.swift
-//  Lab1
-//
-//  Created by Nikita Makarov on 18/09/16.
-//  Copyright © 2016 quiz.corp. All rights reserved.
-//
-
 import UIKit
 import SpriteKit
 import GameplayKit
+
 
 class GameViewController: UIViewController {
 
@@ -16,19 +9,15 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         
         if let view = self.view as! SKView? {
-            // Load the SKScene from 'GameScene.sks'
             if let scene = SKScene(fileNamed: "GameScene") {
-                // Set the scale mode to scale to fit the window
                 scene.scaleMode = .aspectFill
-                
-                // Present the scene
                 view.presentScene(scene)
             }
             
             view.ignoresSiblingOrder = true
-            
             view.showsFPS = true
             view.showsNodeCount = true
+            view.showsPhysics = true
         }
     }
 
@@ -37,16 +26,11 @@ class GameViewController: UIViewController {
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            return .allButUpsideDown
-        } else {
-            return .all
-        }
+        return .portrait
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Release any cached data, images, etc that aren't in use.
     }
 
     override var prefersStatusBarHidden: Bool {
